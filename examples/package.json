@@ -1,0 +1,11 @@
+{
+  "name": "passport-reverseproxy-examples",
+  "version": "0.1.0",
+  "dependencies": {
+    "express": "*",
+    "passport": "*"
+  },
+  "scripts": {
+    "start": "NODE_PATH=../lib && node app.js"
+  }
+}
