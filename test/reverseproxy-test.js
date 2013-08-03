@@ -1,7 +1,7 @@
 var vows = require('vows');
 var assert = require('assert');
 var util = require('util');
-var ReverseProxyStrategy = require('../lib/passport-reverseproxy');
+var ReverseProxyStrategy = require('../lib/');
 
 
 vows.describe('ReverseProxyStrategy').addBatch({

@@ -1,7 +1,7 @@
   var express = require('express'),
       passport = require('passport'),
       util = require('util'),
-      ReverseProxyStrategy = require('passport-reverseproxy');
+      ReverseProxyStrategy = require('../lib/');
 
 
 // Use the ReverseProxyStrategy within Passport.

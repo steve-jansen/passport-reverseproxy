@@ -57,11 +57,25 @@ which will be used as the value for `req.user.username`.
 Optionally, you can specify the request headers that should participate in 
 authentication decisions via the `options.headers` map:
 
+    var express = require('express'),
+        passport = require('passport'),
+        ReverseProxyStrategy = require('passport-reverseproxy');
+
     passport.use(new ReverseProxyStrategy({
-      headers: {
-        'X-Forwarded-User': { alias: 'username', required: true },
-        'X-Forwarded-UserEmail': { alias: 'email', required: false }
-      }
+        headers: {
+          'X-Forwarded-User': { alias: 'username', required: true },
+          'X-Forwarded-UserEmail': { alias: 'email', required: false }
+        }
+      })
+    );
+
+    // require authentication for all requests except favicon.ico
+    app.configure(function() {
+      app.use(express.favicon())
+      app.use(express.bodyParser());
+      app.use(passport.initialize());
+      app.use(passport.authenticate('reverseproxy', { session: false }));
+      app.use(express.static(path.join(__dirname, 'public')));
     });
 
 You can also specify a network range as a whitelist of allowed client
@@ -74,16 +88,15 @@ reverse proxy appliances may also include a non-repudiatable
 token, like a digital signature, that you should validate
 in the `verify` function.
 
-
     passport.use(new ReverseProxyStrategy({
-      headers: {
-        'X-Forwarded-User': { alias: 'username', required: true },
-        'X-Forwarded-UserId': { alias: 'id', required: false }
-      },
-       // only allow localhost to proxy requests
-      whitelist: '127.0.0.1/0'
-    });
-     
+        headers: {
+          'X-Forwarded-User': { alias: 'username', required: true },
+          'X-Forwarded-UserId': { alias: 'id', required: false }
+        },
+         // only allow localhost to proxy requests
+        whitelist: '127.0.0.1/0'
+      })
+    );
 
 Unlike most Passport authentication strategies, it is unlikely you will need
 session caching of the authentication ticket, since the reverse proxy should
@@ -94,13 +107,12 @@ reverse proxy header values and calls `done` providing a user.
 
     passport.use(new ReverseProxyStrategy({
        headers: { 
-          'X-Forwarded-User': { alias: 'username', required: true},
+          'X-Forwarded-User': { alias: 'username', required: true },
           'X-Forwarded-UserId': { alias: 'id', required: false }
        },
        // only allow localhost to proxy requests
        whitelist: '127.0.0.1/0'
-      }
-      ,
+      },
       function(headers, user, done) {
         var err = null;
 
@@ -108,8 +120,8 @@ reverse proxy header values and calls `done` providing a user.
         if (! /^.*@.*$/.test(headers['X-Forwarded-User'])) { return done(err, false, 401); }
 
         return done(err, user);
-      }
-    ));
+      })
+    );
 
 #### Authenticate Requests
 
@@ -137,3 +149,4 @@ For a complete, working example, refer to the [Reverse Proxy example](https://gi
 ## License
 
 [The MIT License](http://opensource.org/licenses/MIT)
+
