@@ -1,0 +1,56 @@
+{
+  "name": "passport-reverseproxy",
+  "version": "0.1.0",
+  "dependencies": {
+    "pkginfo": {
+      "version": "0.3.0",
+      "from": "pkginfo@>=0.2",
+      "resolved": "https://registry.npmjs.org/pkginfo/-/pkginfo-0.3.0.tgz"
+    },
+    "passport": {
+      "version": "0.1.17",
+      "from": "passport@>=0.1.3",
+      "resolved": "https://registry.npmjs.org/passport/-/passport-0.1.17.tgz",
+      "dependencies": {
+        "pkginfo": {
+          "version": "0.2.3",
+          "from": "pkginfo@0.2.x"
+        },
+        "pause": {
+          "version": "0.0.1",
+          "from": "pause@0.0.1",
+          "resolved": "https://registry.npmjs.org/pause/-/pause-0.0.1.tgz"
+        }
+      }
+    },
+    "netmask": {
+      "version": "0.0.2",
+      "from": "netmask@>=0.0.2",
+      "resolved": "https://registry.npmjs.org/netmask/-/netmask-0.0.2.tgz",
+      "dependencies": {
+        "coffee-script": {
+          "version": "1.2.0",
+          "from": "coffee-script@1.2.0",
+          "resolved": "https://registry.npmjs.org/coffee-script/-/coffee-script-1.2.0.tgz"
+        }
+      }
+    },
+    "vows": {
+      "version": "0.7.0",
+      "from": "vows@>=0.6.x",
+      "resolved": "https://registry.npmjs.org/vows/-/vows-0.7.0.tgz",
+      "dependencies": {
+        "eyes": {
+          "version": "0.1.8",
+          "from": "eyes@>=0.1.6",
+          "resolved": "https://registry.npmjs.org/eyes/-/eyes-0.1.8.tgz"
+        },
+        "diff": {
+          "version": "1.0.5",
+          "from": "diff@~1.0.3",
+          "resolved": "https://registry.npmjs.org/diff/-/diff-1.0.5.tgz"
+        }
+      }
+    }
+  }
+}
