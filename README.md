@@ -140,7 +140,7 @@ application:
 
 #### Examples
 
-For a complete, working example, refer to the [Reverse Proxy example](https://github.com/mckinsey/passport-reverseproxy/tree/master/examples).
+For a complete, working example, refer to the [Reverse Proxy example](https://github.com/steve-jansen/passport-reverseproxy/tree/master/examples).
 
 ## Credits
 
